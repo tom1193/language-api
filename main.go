@@ -7,6 +7,7 @@ import (
 	"github.com/tom1193/language-api/nlp"
 	"log"
 	//"github.com/tom1193/language-api/proto"
+	"github.com/rs/cors"
 )
 
 func GetEntityEndpoint(w http.ResponseWriter, req *http.Request) {
@@ -25,6 +26,7 @@ func GetEntityEndpoint(w http.ResponseWriter, req *http.Request) {
 
 func main () {
 	router := mux.NewRouter()
+	handler := cors.Default().Handler(router)
 	router.HandleFunc("/entity", GetEntityEndpoint).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }
