@@ -1,5 +1,9 @@
 package proto
 
+type Request struct {
+	Text string `json:"text, omitempty"`
+}
+
 type Entity struct {
 	Name string `json:"name,omitempty"`
 	Order int32 `json:"order,omitempty"`

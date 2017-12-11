@@ -6,16 +6,21 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/tom1193/language-api/nlp"
 	"log"
+	//"github.com/tom1193/language-api/proto"
 )
 
 func GetEntityEndpoint(w http.ResponseWriter, req *http.Request) {
-	//params := mux.Vars(req)
-	res, err := nlp.AnalyzeEntitySentiment("Michelangelo Caravaggio, Italian painter, is known for 'The Calling of Saint Matthew'.")
-	if err != nil {
-		log.Fatalf("Failed to analyze text: %v", err)
+	params := req.URL.Query()
+	if params["text"] != nil {
+		res, err := nlp.AnalyzeEntitySentiment(params["text"][0])
+		if err != nil {
+			log.Fatalf("Failed to analyze text: %v", err)
+		}
+		result := nlp.GenerateEntity(res)
+		json.NewEncoder(w).Encode(result)
+	} else {
+		log.Fatalf("Failed to parse query params")
 	}
-	result := nlp.GenerateEntity(res)
-	json.NewEncoder(w).Encode(result)
 }
 
 func main () {
