@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"strconv"
-	//"fmt"
 )
 
 const host = "https://api.cognitive.microsoft.com"

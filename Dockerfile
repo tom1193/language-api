@@ -4,8 +4,8 @@ FROM golang
 ADD . /go/src/github.com/tom1193/language-api
 
 # Get google language api creds
-COPY creds/test-16eb2f590f3d.json /creds/
-ENV GOOGLE_APPLICATION_CREDENTIALS /creds/test-16eb2f590f3d.json
+COPY creds/gcp_nlp_creds.json /creds/
+ENV GOOGLE_APPLICATION_CREDENTIALS /creds/gcp_nlp_creds.json
 
 RUN cd /go/src/github.com/tom1193/language-api && go get ./
 RUN go install github.com/tom1193/language-api

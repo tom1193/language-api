@@ -7,7 +7,6 @@ import (
 	"golang.org/x/net/context"
 	languagepb "google.golang.org/genproto/googleapis/cloud/language/v1"
 	"log"
-	"fmt"
 )
 
 func AnalyzeEntitySentiment(text string) (*languagepb.AnalyzeEntitySentimentResponse, error) {

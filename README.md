@@ -1,10 +1,12 @@
-# language-apiEntity sentiment anlysis and bing image search.
+# language-api
+Entity sentiment anlysis and bing image search.
 
 ### Getting started
+This app uses [GCP Natural Language API](https://cloud.google.com/natural-language/). You'll need an API key to run your own version of this app. Place API key file in `creds/` for Docker to fetch it.
 
-Docker is used to run the app in a container. Please have Docker installed and running before the next steps. To build the image, run the following in the project directory:
+Docker is used to run the app in a container. Have Docker installed and running before the next steps. To build the image, run the following in the project directory:
 ```
-docker build -t language-api
+docker build -t language-api .
 ```
 Run `docker images` to check if the image has been built. The following launches a container off that image and deploys the app at http://localhost:8080/
 ```
